@@ -14,10 +14,33 @@ const user_age = parseInt(prompt("inserire l' età"));
 
 console.log(`età inserita: ${user_age}`);
 
-// prezzo per km
+// prezzo per km 0.21$
 
+const full_price = (km_to_go * 0.21);
 
+console.log(`prezzo pieno: ${full_price}`);
 
 // se minorenne sconto 20%
-
 // se over 65 sconto 40%
+
+// imposto lo sconto a zero
+let discount = 0; 
+
+if (user_age < 18) {
+    discount = ((full_price * 20) / 100);
+    // calcolo lo sconto per minorenni
+    console.log(`sconto minorenni ottenuto: ${discount}`);
+} else if (user_age > 65) {
+    discount = ((full_price * 40) / 100);
+    // calcolo lo sconto per over 65
+    console.log(`sconto over 65 ottenuto: ${discount}`);
+}
+
+// calcolo costo finale biglietto
+const final_price = (full_price - discount);
+
+console.log(`prezzo biglietto calcolato: ${final_price.toFixed(2)}`);
+
+// scrivo in html il costo biglietto
+
+document.getElementById('ticket_price').innerHTML = `Il Prezzo del Biglietto Calcolato è: ${final_price.toFixed(2)} &euro;`
